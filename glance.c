@@ -3,10 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #define KNRM "\x1B[0m"
 #define KCYN "\x1B[36m"
 #define KBLU "\x1B[34m"
+#define KGRN "\x1B[32m"
 
 int comp(const void *a, const void *b) {
 
@@ -82,6 +84,17 @@ int main(int argc, char *argv[]) {
       char *icon = (fileList[i]->d_type == DT_DIR) ? "📁" : "📄";
 
       char *color = (fileList[i]->d_type == DT_DIR) ? KBLU : KCYN;
+
+      if (fileList[i]->d_type == DT_DIR) {
+
+        color = KBLU;
+      } else {
+        color = KCYN;
+      }
+      if (access(fileList[i]->d_name, X_OK) == 0 &&
+          fileList[i]->d_type != DT_DIR) {
+        color = KGRN;
+      }
 
       printf("%s%s%-3s\n", color, icon, fileList[i]->d_name);
     }
