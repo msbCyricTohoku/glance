@@ -15,7 +15,7 @@ philosophy.
 Glance is optimized for speed. Below is a benchmark comparison against GNU `ls`
 executed on `/usr/bin` (containing thousands of files).
 
-![Benchmark Comparison](./benchmark_result.png)
+![Benchmark Comparison](./benchmark.png)
 
 *Fig 1. Execution time comparison (lower is better). Glance demonstrates significantly lower latency and tighter consistency.*
 
