@@ -94,6 +94,7 @@ int main(int argc, char *argv[]) {
       if (access(fileList[i]->d_name, X_OK) == 0 &&
           fileList[i]->d_type != DT_DIR) {
         color = KGRN;
+        icon = "🔨";
       }
 
       printf("%s%s%-3s\n", color, icon, fileList[i]->d_name);
